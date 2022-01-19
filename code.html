@@ -1,87 +1,259 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pedra, Papel e Tesoura</title>
+	<meta chaset="utf-8">
+	<title>Pedra, Papel e Tesoura</title>
+	<style>
+		*{
+			font-family: Helvetica;
+			font-weight: 400;
+		}
 
-    <style>
-    *{
-        font-family: Helvetica;
-        font-weight: 400;
-    }
+	#titulo
+	{
+		color: #ffffff;
+		text-align: center;
+	}
 
-    #placar {
-        display:flex;
-        align-items: center;
-        justify-content: center;
-    }
+	#placar
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-    #jogador, #computodor {
-        position:relative;
-        flex-grow: 1;
-        border-radius: 5px;
-        width: 200px;
-        padding: 20px;
-        color: #fff;
-    }
+	}
 
-    #jogador {
-        background-color: #ff7675;
-    }
+	#jogador, #computador
+	{
+		position: relative;
+		flex-grow: 1;
+		border-radius: 5px;
+		width: 200px;
+		padding: 20px;
+		color: #fff;
+	}
 
-    #computador {
-        background-color: #74b9ff
-    }
+	#jogador
+	{
+		background-color: #7400b8;
+	}
 
-    ul#jogador-escolha, ul#computodor-escolha {
-        list-style: nome;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
+	#computador
+	{
+		background-color: #7400b8;
+	}
 
-    ul#jogador-escolha li, ul#computodor-escolha li{
-        display: inline;
-    }
+	{
+	background-color: #ef476f;
+	}
 
-    ul#jogador-escolha li a img, ul#computodor-escolha li a img{
-        max-width: 8;
-    }
+	#versus
+	{
+		color: #fff;
+		font-size: 40px;
+		text-align: center;
+		width: 70px;
+	}
 
-    </style>
+	#jogador-nome, #computador-nome
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	#jogador-nome
+	{
+		text-align: left;
+	}
+
+	#computador-nome
+	{
+		text-align: right;
+	}
+
+	#jogador-pontos, #computador-pontos
+	{
+		position: absolute;
+		top: 8px;
+		font-size: 32px;
+	}
+
+	#jogador-pontos
+	{
+		right: 20px;
+	}
+
+	ul#jogador-escolha, ul#computador-escolha
+	{
+		list-style: none;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+
+	ul#jogador-escolha li, ul#computador-escolha li
+	{
+		display: inline;
+	}
+
+	ul#jogador-escolha li a, ul#computador-escolha li a
+	{
+		opacity: .2;
+	}
+
+	ul#jogador-escolha li a:hover, ul#jogador-escolha li a.selecionado, ul#computador-escolha li a.selecionado
+	{
+		opacity: 1;
+	}
+
+
+	ul#jogador-escolha li a img, ul#computador-escolha li a img
+	{
+		max-width: 80px;
+	}
+
+	#mensagens
+	{
+		background-color: #202020;
+		font-size: 32px;
+		border-radius: 5px;
+		margin: 40px 0;
+		padding: 20px;
+		color: #fefae0;
+		text-align: center;
+	}
+
+
+		</style>
 </head>
-
 <body>
-    <div id="principal">
-        <h1 id="titulo">Pedra, Papel e Tesoura</h1>
-        <div id="placar">
-            <div id="jogador">
-                <h2 id="jogador-nome">Filipo</h2>
-                <span id="jogador-pontos">0</span>
+	<body style="background-color:#0b090a">
+	<div id="principal">
+		<h1 id="titulo">Pedra, Papel e Tesoura</h1>
 
-                <ul id="jogador-escolha">
-                    <li><a id="jogador-escolha-1"><img src="img/pedra.png"></a></li>
-                    <li><a id="jogador-escolha-2"><img src="img/papel.png"></a></li>
-                    <li><a id="jogador-escolha-3"><img src="img/tesoura.png"></a></li>
-                </ul>
-        </div>
+	<div id="placar">
+		<!--Jogador-->
+		<div id="jogador">
+			<h2 id="jogador-nome">Jogador</h2>
+			<span id="jogador-pontos">0</span>
 
-        <div id="versus">vs</div>
+			<ul id="jogador-escolha">
+				<li><a id="jogador-escolha-1" onclick="jogar(1)"><img src="img/pedra.png"></a></li>
+				<li><a id="jogador-escolha-2" onclick="jogar(2)"><img src="img/papel.png"></a></li>
+				<li><a id="jogador-escolha-3" onclick="jogar(3)"><img src="img/tesoura.png"></a></li>
+			</ul>
+		</div>
 
-            <div id="computador">
-                <h2 id="computador-nome">Computador</h2>
-                <span id="computador-pontos">0</span>
+		<div id="versus">VS</div>
 
-                <ul id="computador-escolha">
-                    <li><a id="computador-escolha-1"><img src="img/pedra.png"></a></li>
-                    <li><a id="computador-escolha-2"><img src="img/papel.png"></a></li>
-                    <li><a id="computador-escolha-3"><img src="img/tesoura.png"></a></
-                    li>
-                </ul>
-            </div>
-        </div>
-    </div>
+		<!--Computador-->
+		<div id="computador">
+			<h2 id="computador-nome">Computador</h2>
+			<span id="computador-pontos">0</span>
+
+			<ul id="computador-escolha">
+				<li><a id="computador-escolha-3"><img src="img/tesoura espelhada.png"></a></li>
+				<li><a id="computador-escolha-2"><img src="img/papel espelhada.png"></a></li>
+				<li><a id="computador-escolha-1"><img src="img/pedra espelhada.png"></a></li>	
+			</ul>
+		</div>
+	</div>
+		<div id="mensagens">&nbsp;</div>
+
+		<script>
+			var jogadorEscolha = 0;
+			var jogadorPontuacao = 0;
+			var computadorEscolha = 0;
+			var computadorPontuacao = 0;
+			var ganhador = -1;
+
+
+			function jogar(escolha)
+			{
+			jogadorEscolha = escolha;
+			computadorEscolha = Math.floor((Math.random() * (3 - 1 + 1))) + 1;
+
+			// 1 - Papel
+			// 1 - Pedra
+			// 3 - Tesoura
+			if ((jogadorEscolha == 1) && (computadorEscolha == 1))
+			{
+				ganhador = 0;
+			}
+
+			else if ((jogadorEscolha == 1) && (computadorEscolha == 2))
+			{
+				ganhador = 2;
+			}
+
+			else if ((jogadorEscolha == 1) && (computadorEscolha == 3))
+			{
+				ganhador = 1;
+			}
+
+			else if ((jogadorEscolha == 2) && (computadorEscolha == 1))
+			{
+				ganhador = 1;
+			}
+
+			else if ((jogadorEscolha == 2) && (computadorEscolha == 2))
+			{
+				ganhador = 0;
+			}
+
+			else if ((jogadorEscolha == 2) && (computadorEscolha == 3))
+			{
+				ganhador = 2;
+			}
+
+			else if ((jogadorEscolha == 3) && (computadorEscolha == 1))
+			{
+				ganhador = 2;
+			}
+
+			else if ((jogadorEscolha == 3) && (computadorEscolha == 2))
+			{
+				ganhador = 1;
+			}
+
+			else if ((jogadorEscolha == 3) && (computadorEscolha == 3))
+			{
+				ganhador = 0;
+			}
+
+
+			document.getElementById("jogador-escolha-1").classList.remove('selecionado');
+			document.getElementById("jogador-escolha-2").classList.remove('selecionado');
+			document.getElementById("jogador-escolha-3").classList.remove('selecionado');
+
+			document.getElementById("computador-escolha-1").classList.remove('selecionado');
+			document.getElementById("computador-escolha-2").classList.remove('selecionado');
+			document.getElementById("computador-escolha-3").classList.remove('selecionado');
+
+			document.getElementById("jogador-escolha-" + jogadorEscolha).classList.add('selecionado');
+			document.getElementById("computador-escolha-" + computadorEscolha).classList.add('selecionado');
+
+			if(ganhador == 0)
+			{
+				document.getElementById('mensagens').innerHTML = 'Empate'
+			}
+
+
+			else if(ganhador == 1)
+			{
+				document.getElementById('mensagens').innerHTML = 'Jogador ganhou'
+				jogadorPontuacao++;
+			}
+
+			else if(ganhador == 2)
+			{
+				document.getElementById('mensagens').innerHTML = 'Computador ganhou';
+				computadorPontuacao++;
+			}
+
+			document.getElementById('jogador-pontos').innerHTML = jogadorPontuacao;
+			document.getElementById('computador-pontos').innerHTML = computadorPontuacao;
+			}
+		</script>
 </body>
 </html>
