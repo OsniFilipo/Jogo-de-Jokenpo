@@ -6,6 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pedra, Papel e Tesoura</title>
 
+    <style>
+    *{
+        font-family: Helvetica;
+        font-weight: 400;
+    }
+
+    #placar {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #jogador, #computodor {
+        position:relative;
+        flex-grow: 1;
+        border-radius: 5px;
+        width: 200px;
+        padding: 20px;
+        color: #fff;
+    }
+
+    #jogador {
+        background-color: #ff7675;
+    }
+
+    #computador {
+        background-color: #74b9ff
+    }
+
+    ul#jogador-escolha, ul#computodor-escolha {
+        list-style: nome;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul#jogador-escolha li, ul#computodor-escolha li{
+        display: inline;
+    }
+
+    ul#jogador-escolha li a img, ul#computodor-escolha li a img{
+        max-width: 8;
+    }
+
+    </style>
 </head>
 
 <body>
@@ -15,12 +60,28 @@
             <div id="jogador">
                 <h2 id="jogador-nome">Filipo</h2>
                 <span id="jogador-pontos">0</span>
+
                 <ul id="jogador-escolha">
                     <li><a id="jogador-escolha-1"><img src="img/pedra.png"></a></li>
                     <li><a id="jogador-escolha-2"><img src="img/papel.png"></a></li>
                     <li><a id="jogador-escolha-3"><img src="img/tesoura.png"></a></li>
                 </ul>
         </div>
+
+        <div id="versus">vs</div>
+
+            <div id="computador">
+                <h2 id="computador-nome">Computador</h2>
+                <span id="computador-pontos">0</span>
+
+                <ul id="computador-escolha">
+                    <li><a id="computador-escolha-1"><img src="img/pedra.png"></a></li>
+                    <li><a id="computador-escolha-2"><img src="img/papel.png"></a></li>
+                    <li><a id="computador-escolha-3"><img src="img/tesoura.png"></a></
+                    li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
-</html> 
+</html>
